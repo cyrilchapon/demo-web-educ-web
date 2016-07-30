@@ -456,18 +456,47 @@ module.exports = function (grunt) {
         configFile: 'test/karma.conf.js',
         singleRun: true
       }
-    }
+    },
+    
+    replace: {
+      development: {
+        options: {
+          patterns: [{
+            json: grunt.file.readJSON('./config/dev.json')
+          }]
+        },
+        files: [{
+          expand: true,
+          flatten: true,
+          src: './config/appConfig.js',
+          dest: '<%= yeoman.app %>/scripts'
+        }]
+      }
+    },
   });
 
+  grunt.loadNpmTasks('grunt-replace');
+
+  grunt.registerTask('serve-dist', 'Compile as dist then start a connect web server', function (target) {
+    if (!target) {
+      target = 'development';
+    }
+    
+    return grunt.task.run([
+      'build:' + target,
+      'connect:dist:keepalive'
+    ]);
+  });
 
   grunt.registerTask('serve', 'Compile then start a connect web server', function (target) {
-    if (target === 'dist') {
-      return grunt.task.run(['build', 'connect:dist:keepalive']);
+    if (!target) {
+      target = 'development';
     }
 
     grunt.task.run([
       'clean:server',
       'wiredep',
+      'replace:' + target,
       'concurrent:server',
       'postcss:server',
       'connect:livereload',
@@ -480,37 +509,59 @@ module.exports = function (grunt) {
     grunt.task.run(['serve:' + target]);
   });
 
-  grunt.registerTask('test', [
-    'clean:server',
-    'wiredep',
-    'concurrent:test',
-    'postcss',
-    'connect:test',
-    'karma'
-  ]);
+  grunt.registerTask('test', 'Run unit tests', function(target) {
+    if (!target) {
+      target = 'development';
+    }
+    
+    grunt.task.run([
+      'clean:server',
+      'wiredep',
+      'replace:' + target,
+      'concurrent:test',
+      'postcss',
+      'connect:test',
+      'karma'
+    ]);
+  });
 
-  grunt.registerTask('build', [
-    'clean:dist',
-    'wiredep',
-    'useminPrepare',
-    'concurrent:dist',
-    'postcss',
-    'ngtemplates',
-    'concat',
-    'ngAnnotate',
-    'copy:dist',
-    'cdnify',
-    'cssmin',
-    'uglify',
-    'filerev',
-    'usemin',
-    'htmlmin'
-  ]);
+  grunt.registerTask('build', 'Build the app', function(target) {
+    if (!target) {
+      target = 'development';
+    }
+    
+    grunt.task.run([
+      'clean:dist',
+      'wiredep',
+      'replace:' + target,
+      'useminPrepare',
+      'concurrent:dist',
+      'postcss',
+      'ngtemplates',
+      'concat',
+      'ngAnnotate',
+      'copy:dist',
+      'cdnify',
+      'cssmin',
+      'uglify',
+      'filerev',
+      'usemin',
+      'htmlmin'
+    ]);
+  });
 
-  grunt.registerTask('default', [
-    'newer:jshint',
-    'newer:jscs',
-    'test',
-    'build'
-  ]);
+  grunt.registerTask('default', 'Hint, test and build the app', function(target) {
+    if (!target) {
+      target = 'development';
+    }
+    
+    grunt.task.run([
+      'newer:jshint',
+      'newer:jscs',
+      'test:' + target,
+      'build:' + target
+    ]);
+  });
+  
+  grunt.registerTask('dev', ['default:dev']);
 };
