@@ -256,6 +256,19 @@ module.exports = function (grunt) {
       }
     },
 
+    compress: {
+      main: {
+        options: {
+          archive: 'dist.zip'
+        },
+        files: [{
+          expand: true,
+          cwd: '<%= yeoman.dist %>/',
+          src: ['**']
+        }]
+      }
+    },
+
     // Renames files for browser caching purposes
     filerev: {
       dist: {
@@ -483,6 +496,7 @@ module.exports = function (grunt) {
   });
 
   grunt.loadNpmTasks('grunt-replace');
+  grunt.loadNpmTasks('grunt-contrib-compress');
 
   grunt.registerTask('serve-dist', 'Compile as dist then start a connect web server', function (target) {
     if (!target) {
@@ -554,6 +568,17 @@ module.exports = function (grunt) {
       'filerev',
       'usemin',
       'htmlmin'
+    ]);
+  });
+
+  grunt.registerTask('package', 'Build and package the app', function (target) {
+    if (!target) {
+      target = 'development';
+    }
+    
+    return grunt.task.run([
+      'build:' + target,
+      'compress'
     ]);
   });
 
