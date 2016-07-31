@@ -24,6 +24,11 @@ module.exports = function(config) {
       'bower_components/angular/angular.js',
       'bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js',
       'bower_components/angular-route/angular-route.js',
+      'bower_components/angular-translate/angular-translate.js',
+      'bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.js',
+      'bower_components/moment/min/moment-with-locales.min.js',
+      'bower_components/angular-moment/angular-moment.js',
+      'bower_components/angular-dynamic-locale/src/tmhDynamicLocale.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'app/scripts/**/*.js',

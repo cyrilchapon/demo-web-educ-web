@@ -10,5 +10,8 @@
  */
 angular
   .module('demoWebEducWebApp', [
-    'ngRoute'
+    'ngRoute',
+    'tmh.dynamicLocale',
+    'pascalprecht.translate',
+    'angularMoment'
   ]);
