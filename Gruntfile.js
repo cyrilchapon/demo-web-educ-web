@@ -432,6 +432,11 @@ module.exports = function (grunt) {
           ]
         }, {
           expand: true,
+          cwd: '',
+          dest: '<%= yeoman.dist %>',
+          src: ['Dockerfile']
+        }, {
+          expand: true,
           cwd: '.tmp/images',
           dest: '<%= yeoman.dist %>/images',
           src: ['generated/*']
