@@ -10,14 +10,6 @@ install:
   - bower install --no-interactive
 script:
   - grunt package
-deploy:
-  provider: releases
-  api_key:
-    secure: CV5Mr3T3VPHDrBqWDT8osXmdPblgoyDFAgWHwbu+dCy4X+2pu6YJ4wRCkAwl16JyG3P/MKgXDNy7xVhUTOTMuWrFHvU5IpJxVQylZI2yTWBhClaaydm1oEHnUZACbQANoK3G48/u3obM2SR1ZPSGKmCajAYwJV777Nxf/8KYbAJvGeaMfqWtaqyco2REBmO87ZaHYhOBq+AmsfyZxgVO3q9ltTeIASbnLPtdpUa/wZX77PMCMCQQt0tFHAlh2666yCaZjX2SQb/SAtXNL1QpVA2r5JJxgsMqjD8vEBuSWOGTZK4kHZ/0qIYzFYdFbeJ0B/IuM8c0NJtSuQtXHGchfAyGDLNtuaOL4ukVgT7oAkoZfjrUScO9dS7uh6zqHnYj10a8eyzYapEdrkhK1AwmUOB+4KbzeQ5Cv9xzIUkDMmpJGCFrslaDU7A2/2B8AXhDo0McmosPAaw2JA2e0Is3PTKGqn7Eu/32+xNuKXbJHDQU6eEk6YwKeHIvhNHiaQHeK+9xElrqfdOBHsSkMnGBnMfVJriDfGdFE0GrrFMcbNyapIvw9QHS9XcdA/FM+bxvxy3uL8bfAUtCQMSVuG/qVHkKeM3ZpyOAKgH9yL85415EbPHg+zqSW6dbMhN6bxHu6EYFyRrDhULFjCOJWlvu9VT1Ap1LThIRzGBymtmNI8A=
-  file: dist.zip
-  skip_cleanup: true
-  on:
-    tags: true
 after_success:
   if ([ "$TRAVIS_BRANCH" == "master" ] || [ ! -z "$TRAVIS_TAG" ]) && 
       [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
@@ -31,22 +23,30 @@ after_success:
       chmod 600 deploy-web-educ-web.pem;
       ssh-add deploy-web-educ-web.pem;
 
-      cd dist;
-      git init;
-      git remote add deploy "git@github.com:cyrilchapon/demo-web-educ-web-dist.git";
-      
-      ls;
-
-      git add -A .;
-      git config user.email "cyril.chapon@live.com";
-      git config user.name "Cyril CHAPON";
-      git commit -m "New distribution";
-
       if ([ ! -z "$TRAVIS_TAG" ]); then
+        cd dist;
+        git init;
+        git remote add origin "git@github.com:cyrilchapon/demo-web-educ-web-dist.git";
+
+        git config user.email "cyril.chapon@live.com";
+        git config user.name "Travis CI";
+
+        git add -A .;
+
         git tag $TRAVIS_TAG;
-        git push -u deploy --tags --force;
+        git push -u origin --tags --force;
       else
-        git push -u deploy master --force;
+        git clone git@github.com:cyrilchapon/demo-web-educ-web-dist.git olddist;
+        cp -r olddist/.git dist;
+        cd dist;
+
+        git config user.email "cyril.chapon@live.com";
+        git config user.name "Travis CI";
+
+        git add -A .;
+
+        git commit -m "New distribution";
+        git push -u origin master;
       fi
     else
       echo "Skipping deploy because no dist directory found";
