@@ -1,7 +1,7 @@
 language:
   - node_js
 node_js:
-  - "5.12"
+  - '5.12'
 before_install:
   - npm install -g grunt-cli bower yo generator-karma generator-angular
   - gem install compass
@@ -18,3 +18,39 @@ deploy:
   skip_cleanup: true
   on:
     tags: true
+after_success:
+  if ([ "$TRAVIS_BRANCH" == "master" ] || [ ! -z "$TRAVIS_TAG" ]) && 
+      [ "$TRAVIS_PULL_REQUEST" == "false" ]; then
+    
+    if ([ -d "dist" ] ); then
+      echo "Deploying to dist repo";
+
+      openssl aes-256-cbc -K $encrypted_42099b4af021_key -iv $encrypted_42099b4af021_iv -in deploy-web-educ-web.pem.enc -out deploy-web-educ-web.pem -d;
+
+      eval "$(ssh-agent -s)";
+      chmod 600 deploy-web-educ-web.pem;
+      ssh-add deploy-web-educ-web.pem;
+
+      cd dist;
+      git init;
+      git remote add deploy "git@github.com:cyrilchapon/demo-web-educ-web-dist.git";
+      
+      ls;
+
+      git add -A .;
+      git config user.email "cyril.chapon@live.com";
+      git config user.name "Cyril CHAPON";
+      git commit -m "New distribution";
+
+      if ([ ! -z "$TRAVIS_TAG" ]); then
+        git tag $TRAVIS_TAG;
+        git push -u deploy --tags --force;
+      else
+        git push -u deploy master --force;
+      fi
+    else
+      echo "Skipping deploy because no dist directory found";
+    fi
+  else
+    echo "Skipping deploy on dist repo";
+  fi
