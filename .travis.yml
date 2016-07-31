@@ -1,7 +1,7 @@
 language:
   - node_js
 node_js:
-  - "5.8"
+  - "5.12"
 before_install:
   - npm install -g grunt-cli bower yo generator-karma generator-angular
   - gem install compass
