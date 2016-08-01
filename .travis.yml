@@ -23,29 +23,21 @@ after_success:
       chmod 600 deploy-web-educ-web.pem;
       ssh-add deploy-web-educ-web.pem;
 
+      git clone git@github.com:cyrilchapon/demo-web-educ-web-dist.git olddist;
+      cp -r olddist/.git dist;
+      cd dist;
+
+      git config user.email "cyril.chapon@live.com";
+      git config user.name "Travis CI";
+
+      git add -A .;
+
+      git commit -m "New distribution";
+
       if ([ ! -z "$TRAVIS_TAG" ]); then
-        cd dist;
-        git init;
-        git remote add origin "git@github.com:cyrilchapon/demo-web-educ-web-dist.git";
-
-        git config user.email "cyril.chapon@live.com";
-        git config user.name "Travis CI";
-
-        git add -A .;
-
         git tag $TRAVIS_TAG;
-        git push -u origin --tags --force;
+        git push -u origin $TRAVIS_TAG --force;
       else
-        git clone git@github.com:cyrilchapon/demo-web-educ-web-dist.git olddist;
-        cp -r olddist/.git dist;
-        cd dist;
-
-        git config user.email "cyril.chapon@live.com";
-        git config user.name "Travis CI";
-
-        git add -A .;
-
-        git commit -m "New distribution";
         git push -u origin master;
       fi
     else
