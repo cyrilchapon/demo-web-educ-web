@@ -35,10 +35,10 @@ after_success:
       git commit -m "New distribution";
 
       if ([ ! -z "$TRAVIS_TAG" ]); then
-        git tag $TRAVIS_TAG;
-        git push -u origin $TRAVIS_TAG --force;
+        git tag -f $TRAVIS_TAG;
+        git push origin $TRAVIS_TAG --force;
       else
-        git push -u origin master;
+        git push origin master;
       fi
     else
       echo "Skipping deploy because no dist directory found";
