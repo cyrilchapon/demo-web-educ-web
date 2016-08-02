@@ -12,6 +12,9 @@ angular
   .config(function(tmhDynamicLocaleProvider){
     tmhDynamicLocaleProvider.localeLocationPattern('bower_components/angular-i18n/angular-locale_{{locale}}.js');
   })
+  .config(function (localStorageServiceProvider) {
+    localStorageServiceProvider.setPrefix('demoWebEducWebApp');
+  })
   .config(function($translateProvider) {
     $translateProvider
       .useStaticFilesLoader({

@@ -14,5 +14,6 @@ angular
     'tmh.dynamicLocale',
     'pascalprecht.translate',
     'angularMoment',
-    'angularFileInput'
+    'angularFileInput',
+    'LocalStorageModule'
   ]);
