@@ -1,4 +1,10 @@
 {
+  "header": {
+    "brand": "Web-education demo",
+    "menu": {
+      "home": "Home"
+    }
+  },
   "footer": {
     "copyright": "Made with care by Cyril CHAPON"
   },
