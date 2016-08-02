@@ -4,7 +4,8 @@
 
 <div class="panel panel-default" ng-repeat="image in images">
   <div class="panel-body">
-    <img ng-src="{{ image ? ('data:' + image.mimetype + ';base64,' + image.content) : 'images/blank-img.png' }} " />
+    <p><img ng-src="{{ image ? ('data:' + image.mimetype + ';base64,' + image.content) : 'images/blank-img.png' }} " /></p>
+    <em>{{ 'page.app.feed.label.picadded' | translate }}</em>
   </div>
 
   <div class="panel-footer"><abbr title="{{ image.savedAt | amCalendar }}">{{ image.savedAt | amTimeAgo }}</abbr></div>

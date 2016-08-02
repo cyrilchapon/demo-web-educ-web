@@ -31,7 +31,9 @@
         }
       },
       "feed": {
-
+        "label": {
+          "picadded": "A picture was added"
+        }
       }
     }
   }
