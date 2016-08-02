@@ -23,7 +23,7 @@
       "loadpic": {
         "button": {
           "pickpic": "Choisir une image",
-          "clear": "Supprimer",
+          "clear": "Vider",
           "save": "Sauvegarder"
         },
         "errors": {
