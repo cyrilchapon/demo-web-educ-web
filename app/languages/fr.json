@@ -25,6 +25,9 @@
           "pickpic": "Choisir une image",
           "clear": "Supprimer",
           "save": "Sauvegarder"
+        },
+        "errors": {
+          "pictureTooBig": "Cette image et trop volumineuse."
         }
       },
       "feed": {

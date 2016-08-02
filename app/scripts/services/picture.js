@@ -12,9 +12,22 @@ angular.module('demoWebEducWebApp')
     var service = {};
     
     var imagePrefix = 'img.';
+
+    service.errors = {
+      tooBig: 1
+    };
     
+    service.maxSize = 500000;
+
     service.save = function(image) {
       var deferred = $q.defer();
+
+      if(image.size > service.maxSize) {
+        deferred.reject(service.errors.tooBig);
+        return deferred.promise;
+      }
+
+      image.savedAt = new Date();
 
       var result = localStorageService.set(imagePrefix + image.name, image);
 
