@@ -15,5 +15,6 @@ angular
     'pascalprecht.translate',
     'angularMoment',
     'angularFileInput',
-    'LocalStorageModule'
+    'LocalStorageModule',
+    'ui-notification'
   ]);

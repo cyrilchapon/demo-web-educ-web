@@ -33,6 +33,7 @@
           "save": "Sauvegarder"
         },
         "errors": {
+          "success": "L'image a bien été entregistrée.",
           "pictureTooBig": "Cette image et trop volumineuse.",
           "generic": "L'image n'a pas pu être ajoutée."
         }

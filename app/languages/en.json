@@ -33,6 +33,7 @@
           "save": "Save"
         },
         "errors": {
+          "success": "Picture has been added.",
           "pictureTooBig": "This picture is too big.",
           "generic": "Picture couldn't be saved."
         }

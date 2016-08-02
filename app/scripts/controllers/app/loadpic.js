@@ -8,7 +8,7 @@
  * Controller of the demoWebEducWebApp
  */
 angular.module('demoWebEducWebApp')
-  .controller('AppLoadpicCtrl', function ($scope, pictureSrv, $translate, $window) {
+  .controller('AppLoadpicCtrl', function ($scope, pictureSrv, $translate, Notification) {
     $scope.image = null;
 
     $scope.validate = function(file) {
@@ -18,14 +18,17 @@ angular.module('demoWebEducWebApp')
     
     $scope.save = function(image) {
       pictureSrv.save(image).then(
-        null,
+        function() {
+          Notification.success($translate.instant('page.app.loadpic.errors.success'));
+          $scope.image = null;
+        },
         function(error) {
           switch(error) {
             case pictureSrv.errors.tooBig:
-              $window.alert($translate.instant('page.app.loadpic.errors.pictureTooBig'));
+              Notification.error($translate.instant('page.app.loadpic.errors.pictureTooBig'));
               break;
             default:
-              $window.alert($translate.instant('page.app.loadpic.errors.generic'));
+              Notification.error($translate.instant('page.app.loadpic.errors.generic'));
               break;
           }
         }
