@@ -16,5 +16,7 @@ angular
     'angularMoment',
     'angularFileInput',
     'LocalStorageModule',
+    'angular-uuid',
+    '$q-spread',
     'ui-notification'
   ]);

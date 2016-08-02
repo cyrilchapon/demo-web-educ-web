@@ -24,7 +24,16 @@
     },
     "app": {
       "typename": {
-
+        "button": {
+          "save": "Sauvegarder"
+        },
+        "label": {
+          "inputname": "Nom:"
+        },
+        "errors": {
+          "success": "Le nom a bien été entregistré.",
+          "generic": "Le nom n'a pas pu être ajouté."
+        }
       },
       "loadpic": {
         "button": {
@@ -40,7 +49,8 @@
       },
       "feed": {
         "label": {
-          "picadded": "Une image a été ajoutée"
+          "picadded": "Une image a été ajoutée",
+          "nameadded": "Un nom a été tapé"
         }
       }
     }

@@ -17,7 +17,7 @@ angular.module('demoWebEducWebApp')
     };
     
     $scope.save = function(image) {
-      pictureSrv.save(image).then(
+      pictureSrv.create(image).then(
         function() {
           Notification.success($translate.instant('page.app.loadpic.errors.success'));
           $scope.image = null;

@@ -8,20 +8,23 @@
  * Controller of the demoWebEducWebApp
  */
 angular.module('demoWebEducWebApp')
-  .controller('AppFeedCtrl', function ($scope, pictureSrv) {
-    $scope.images = [];
+  .controller('AppFeedCtrl', function ($scope, $q, pictureSrv, nameSrv) {
+    $scope.items = [];
 
     $scope.loading = true;
 
-    $scope.refreshImages = function() {
-      return pictureSrv.findAll().then(function(images){
-        images = _.sortBy(images, 'savedAt').reverse();
-        $scope.images = images;
+    $scope.refreshFeed = function() {
+      return $q.all([
+        pictureSrv.findAll(),
+        nameSrv.findAll()
+      ])
+      .spread(function(images, names){
+        $scope.items = _.sortBy(_.concat(images, names), 'savedAt').reverse();
+      })
+      .finally(function(){
+        $scope.loading = false;
       });
     };
 
-    $scope.refreshImages().finally(function(){
-      $scope.loading = false;
-    });
-
+    $scope.refreshFeed();
   });

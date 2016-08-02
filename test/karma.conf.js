@@ -33,6 +33,8 @@ module.exports = function(config) {
       'bower_components/simple-angular-file-input/dist/angular-file-input.min.js',
       'bower_components/angular-local-storage/dist/angular-local-storage.js',
       'bower_components/lodash/dist/lodash.min.js',
+      'bower_components/angular-uuids/angular-uuid.js',
+      'bower_components/angular-q-spread/dist/q-spread.min.js',
       'bower_components/angular-ui-notification/dist/angular-ui-notification.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower

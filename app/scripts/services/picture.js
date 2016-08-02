@@ -8,7 +8,7 @@
  * Service in the demoWebEducWebApp.
  */
 angular.module('demoWebEducWebApp')
-  .service('pictureSrv', function (localStorageService, $q) {
+  .service('pictureSrv', function (localStorageService, $q, uuid, itemSrv) {
     var service = {};
     
     var imagePrefix = 'img.';
@@ -19,7 +19,7 @@ angular.module('demoWebEducWebApp')
     
     service.maxSize = 500000;
 
-    service.save = function(image) {
+    service.create = function(image) {
       var deferred = $q.defer();
 
       if(image.size > service.maxSize) {
@@ -27,17 +27,14 @@ angular.module('demoWebEducWebApp')
         return deferred.promise;
       }
 
-      image.savedAt = new Date();
+      var item = {
+        type: 'image',
+        savedAt: new Date(),
+        id: imagePrefix + uuid.v4(),
+        data: image
+      };
 
-      var result = localStorageService.set(imagePrefix + image.name, image);
-
-      if(result) {
-        deferred.resolve();
-      } else {
-        deferred.reject();
-      }
-
-      return deferred.promise;
+      return itemSrv.create(item);
     };
 
     service.findAll = function() {

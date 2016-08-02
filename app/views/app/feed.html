@@ -1,8 +1,13 @@
-<div class="panel panel-default" ng-repeat="image in images">
-  <div class="panel-body">
-    <p><img ng-src="{{ image ? ('data:' + image.mimetype + ';base64,' + image.content) : 'images/blank-img.png' }} " /></p>
+<div class="panel panel-default" ng-repeat="item in items">
+  <div ng-if="item.type === 'image'" class="panel-body">
+    <p><img ng-src="{{ item.data ? ('data:' + item.data.mimetype + ';base64,' + item.data.content) : 'images/blank-img.png' }} " /></p>
     <em>{{ 'page.app.feed.label.picadded' | translate }}</em>
   </div>
 
-  <div class="panel-footer"><abbr title="{{ image.savedAt | amCalendar }}">{{ image.savedAt | amTimeAgo }}</abbr></div>
+  <div ng-if="item.type === 'name'" class="panel-body">
+    <blockquote>{{ item.data }}</blockquote>
+    <em>{{ 'page.app.feed.label.nameadded' | translate }}</em>
+  </div>
+
+  <div class="panel-footer"><abbr title="{{ item.savedAt | amCalendar }}">{{ item.savedAt | amTimeAgo }}</abbr></div>
 </div>
