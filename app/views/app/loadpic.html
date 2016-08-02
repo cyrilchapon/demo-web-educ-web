@@ -14,10 +14,10 @@
 
 <div class="row text-center">
   <ng-file-input mode="data-url" callback="validate(file)" accept="image/*" tmpl="'views/app/loadpic/picfilebutton.html'"></ng-file-input>
-  <button class="btn btn-danger" ng-disabled="!image" type='button' ng-click='image = null'>{{ 'page.app.loadpic.button.clear' | translate }}</button>
-  <button class="btn btn-primary" ng-disabled="!image" type='button' ng-click='save(image)'>{{ 'page.app.loadpic.button.save' | translate }}</button>
+  <button class="btn btn-danger" ng-disabled="!image" type='button' ng-click='image = null'><i class="glyphicon glyphicon-remove"></i> {{ 'page.app.loadpic.button.clear' | translate }}</button>
+  <button class="btn btn-primary" ng-disabled="!image" type='button' ng-click='save(image)'><i class="glyphicon glyphicon-floppy-open"></i> {{ 'page.app.loadpic.button.save' | translate }}</button>
 </div>
 
 <script type="text/ng-template" id="views/app/loadpic/picfilebutton.html">
-  <button class="btn btn-default">{{ 'page.app.loadpic.button.pickpic' | translate }}</button>
+  <button class="btn btn-default"><i class="glyphicon glyphicon-level-up"></i> {{ 'page.app.loadpic.button.pickpic' | translate }}</button>
 </script>

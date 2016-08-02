@@ -1,12 +1,12 @@
 <div class="panel panel-default" ng-repeat="item in items">
   <div ng-if="item.type === 'image'" class="panel-body">
-    <p><img ng-src="{{ item.data ? ('data:' + item.data.mimetype + ';base64,' + item.data.content) : 'images/blank-img.png' }} " /></p>
-    <em>{{ 'page.app.feed.label.picadded' | translate }}</em>
+    <p><img ng-src="{{ item.data ? ('data:' + item.data.mimetype + ';base64,' + item.data.content) : 'images/blank-img.png' }} " style="max-width: 100%" /></p>
+    <small class="text-muted"><em>{{ 'page.app.feed.label.picadded' | translate }}</em></small>
   </div>
 
   <div ng-if="item.type === 'name'" class="panel-body">
     <blockquote>{{ item.data }}</blockquote>
-    <em>{{ 'page.app.feed.label.nameadded' | translate }}</em>
+    <small class="text-muted"><em>{{ 'page.app.feed.label.nameadded' | translate }}</em></small>
   </div>
 
   <div class="panel-footer"><abbr title="{{ item.savedAt | amCalendar }}">{{ item.savedAt | amTimeAgo }}</abbr></div>
