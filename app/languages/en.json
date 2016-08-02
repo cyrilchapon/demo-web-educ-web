@@ -33,7 +33,8 @@
           "save": "Save"
         },
         "errors": {
-          "pictureTooBig": "This picture is too big."
+          "pictureTooBig": "This picture is too big.",
+          "generic": "Picture couldn't be saved."
         }
       },
       "feed": {

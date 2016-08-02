@@ -24,6 +24,9 @@ angular.module('demoWebEducWebApp')
             case pictureSrv.errors.tooBig:
               $window.alert($translate.instant('page.app.loadpic.errors.pictureTooBig'));
               break;
+            default:
+              $window.alert($translate.instant('page.app.loadpic.errors.generic'));
+              break;
           }
         }
       );
