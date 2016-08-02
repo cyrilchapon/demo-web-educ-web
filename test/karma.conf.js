@@ -30,7 +30,7 @@ module.exports = function(config) {
       'bower_components/angular-moment/angular-moment.js',
       'bower_components/angular-dynamic-locale/src/tmhDynamicLocale.js',
       'bower_components/angular-ui-router/release/angular-ui-router.js',
-      'bower_components/simple-angular-file-input/dist/angular-file-input.js',
+      'bower_components/simple-angular-file-input/dist/angular-file-input.min.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'app/scripts/**/*.js',

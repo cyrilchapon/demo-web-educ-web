@@ -31,6 +31,9 @@
       "main": [
         "min/moment-with-locales.min.js"
       ]
+    },
+    "simple-angular-file-input": {
+      "dependencies": []
     }
   },
   "resolutions": {
