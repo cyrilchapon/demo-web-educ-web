@@ -1,7 +1,3 @@
-<div class="panel">
-
-</div>
-
 <div class="panel panel-default" ng-repeat="image in images">
   <div class="panel-body">
     <p><img ng-src="{{ image ? ('data:' + image.mimetype + ';base64,' + image.content) : 'images/blank-img.png' }} " /></p>
