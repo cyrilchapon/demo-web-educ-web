@@ -8,6 +8,15 @@
  * Controller of the demoWebEducWebApp
  */
 angular.module('demoWebEducWebApp')
-  .controller('AppFeedCtrl', function () {
+  .controller('AppFeedCtrl', function ($scope, pictureSrv) {
+    $scope.images = [];
+
+    $scope.refreshImages = function() {
+      return pictureSrv.findAll().then(function(images){
+        $scope.images = images;
+      });
+    };
+
+    $scope.refreshImages();
 
   });
