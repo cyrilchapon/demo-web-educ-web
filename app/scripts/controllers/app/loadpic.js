@@ -8,7 +8,7 @@
  * Controller of the demoWebEducWebApp
  */
 angular.module('demoWebEducWebApp')
-  .controller('AppLoadpicCtrl', function ($scope, localStorageService) {
+  .controller('AppLoadpicCtrl', function ($scope, pictureSrv) {
     $scope.image = null;
 
     $scope.validate = function(file) {
@@ -17,6 +17,6 @@ angular.module('demoWebEducWebApp')
     };
     
     $scope.save = function(image) {
-      return localStorageService.set(image.name, image);
+      return pictureSrv.save(image);
     };
   });
