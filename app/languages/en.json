@@ -15,6 +15,21 @@
           "title": "News feed"
         }
       }
+    },
+    "app": {
+      "typename": {
+
+      },
+      "loadpic": {
+        "button": {
+          "pickpic": "Pick a picture",
+          "clear": "Clear",
+          "save": "Save"
+        }
+      },
+      "feed": {
+
+      }
     }
   }
 }

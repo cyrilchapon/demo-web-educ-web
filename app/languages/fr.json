@@ -15,6 +15,21 @@
           "title": "Fil d'actualité"
         }
       }
+    },
+    "app": {
+      "typename": {
+
+      },
+      "loadpic": {
+        "button": {
+          "pickpic": "Choisir une image",
+          "clear": "Supprimer",
+          "save": "Sauvegarder"
+        }
+      },
+      "feed": {
+
+      }
     }
   }
 }

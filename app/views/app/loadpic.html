@@ -1,0 +1,23 @@
+<!-- <div class="panel panel-default">
+  <div style="width: 200px; height: 200px; line-height: 200px; text-align: center;">
+    <img style="max-width: 200px; max-height: 200px;" ng-src="{{ file ? ('data:' + file.mimetype + ';base64,' + file.content) : 'images/blank-img.png' }} " />
+  </div>
+</div> -->
+
+<div class="row">
+  <div class="col-md-4 col-md-offset-4 col-xs-10 col-xs-offset-1">
+    <a class="thumbnail">
+      <img ng-src="{{ image ? ('data:' + image.mimetype + ';base64,' + image.content) : 'images/blank-img.png' }} " />
+    </a>
+  </div>
+</div>
+
+<div class="row text-center">
+  <ng-file-input mode="data-url" callback="validate(file)" accept="image/*" tmpl="'views/app/loadpic/picfilebutton.html'"></ng-file-input>
+  <button class="btn btn-danger" ng-disabled="!image" type='button' ng-click='image = null'>{{ 'page.app.loadpic.button.clear' | translate }}</button>
+  <button class="btn btn-primary" ng-disabled="!image" type='button' ng-click='save(image)'>{{ 'page.app.loadpic.button.save' | translate }}</button>
+</div>
+
+<script type="text/ng-template" id="views/app/loadpic/picfilebutton.html">
+  <button class="btn btn-default">{{ 'page.app.loadpic.button.pickpic' | translate }}</button>
+</script>

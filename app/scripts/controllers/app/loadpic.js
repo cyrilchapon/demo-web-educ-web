@@ -8,6 +8,11 @@
  * Controller of the demoWebEducWebApp
  */
 angular.module('demoWebEducWebApp')
-  .controller('AppLoadpicCtrl', function () {
+  .controller('AppLoadpicCtrl', function ($scope) {
+    $scope.image = null;
 
+    $scope.validate = function(file) {
+      //TODO type and size check
+      $scope.image = file;
+    };
   });

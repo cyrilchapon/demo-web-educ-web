@@ -13,5 +13,6 @@ angular
     'ui.router',
     'tmh.dynamicLocale',
     'pascalprecht.translate',
-    'angularMoment'
+    'angularMoment',
+    'angularFileInput'
   ]);
