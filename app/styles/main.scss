@@ -6,6 +6,30 @@ $icon-font-path: '../bower_components/bootstrap-sass-official/assets/fonts/boots
 // endbower
 // scss-lint:enable ImportPath, StringQuotes
 
+@import "variables";
+
 [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak, .translate-cloak {
   display: none !important;
 }
+
+//Fixed navbar requirement
+body {
+  padding-top: $navbar-height + $navbar-margin-bottom;
+}
+
+//Sticky footer
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  margin-bottom: $footer-height + $footer-margin-top;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: $footer-height;
+}
+
+@import 'footer';

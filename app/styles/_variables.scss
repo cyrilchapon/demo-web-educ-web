@@ -1,0 +1,7 @@
+$footer-height: $navbar-height;
+$footer-margin-top: $navbar-margin-bottom;
+$footer-border-radius: $navbar-border-radius;
+
+$footer-default-bg: $navbar-default-bg;
+$footer-default-color: mix($navbar-default-color, $footer-default-bg);
+$footer-default-border: $navbar-default-border;

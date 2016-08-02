@@ -1,0 +1,11 @@
+.footer {
+  line-height: $footer-height;
+  border-top-left-radius: $footer-border-radius;
+  border-top-right-radius: $footer-border-radius;
+  
+  &-default {
+    color: $footer-default-color;
+    background-color: $footer-default-bg;
+    border-top: $footer-default-border;
+  }
+}
