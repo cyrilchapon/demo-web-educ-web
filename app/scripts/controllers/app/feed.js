@@ -15,7 +15,7 @@ angular.module('demoWebEducWebApp')
 
     $scope.refreshImages = function() {
       return pictureSrv.findAll().then(function(images){
-        images = _.sortBy(images, 'savedAt');
+        images = _.sortBy(images, 'savedAt').reverse();
         $scope.images = images;
       });
     };
