@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc function
- * @name demoWebEducWebApp.controller:MainCtrl
+ * @name demoWebEducWebApp.controller:HomeCtrl
  * @description
- * # MainCtrl
+ * # HomeCtrl
  * Controller of the demoWebEducWebApp
  */
 angular.module('demoWebEducWebApp')
-  .controller('MainCtrl', function () {
+  .controller('HomeCtrl', function () {
 
   });
