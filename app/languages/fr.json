@@ -1,5 +1,20 @@
 {
   "footer": {
     "copyright": "Codé avec soin par Cyril CHAPON"
+  },
+  "page": {
+    "home": {
+      "app": {
+        "typename": {
+          "title": "Saisir son nom"
+        },
+        "loadpic": {
+          "title": "Charger une image"
+        },
+        "feed": {
+          "title": "Fil d'actualité"
+        }
+      }
+    }
   }
 }

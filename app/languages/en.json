@@ -1,5 +1,20 @@
 {
   "footer": {
     "copyright": "Made with care by Cyril CHAPON"
+  },
+  "page": {
+    "home": {
+      "app": {
+        "typename": {
+          "title": "Type a name"
+        },
+        "loadpic": {
+          "title": "Load a picture"
+        },
+        "feed": {
+          "title": "News feed"
+        }
+      }
+    }
   }
 }
